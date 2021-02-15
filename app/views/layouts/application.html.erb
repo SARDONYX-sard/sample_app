@@ -15,9 +15,18 @@
 <body>
   <%= render 'layouts/header' %>
   <div class="container">
+    <%# :successは埋め込みRubyで自動的に"success"という文字列に変換される %>
+    <%# 例:
+        >> "#{:success}"
+        => "success" %>
+    <%# key:message_type, value:messageが入る %>
+    <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
     <%= yield %>
   </div>
   <%= render 'layouts/footer' %>
+  <%= debug(params) if Rails.env.development? %>
 </body>
 
 </html>

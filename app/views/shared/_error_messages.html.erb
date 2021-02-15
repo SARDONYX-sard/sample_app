@@ -1,0 +1,19 @@
+<%# any?: empty?の逆（補完）。要素が1つでもある場合trueを返す %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+    <div class="alert alert-danger">
+        <%# pluralizeは「複数形にする」という動詞 %>
+        <%# Railsエラーオブジェクト用のcountメソッド: エラー数を返す %>
+        <%# 例： 第二引数が複数形になって第一引数と結合されて返される
+            >> helper.pluralize(2, "woman")
+            => "2 women" %>
+        <%# "1 errors" のような英文法に合わない文字列を回避%>
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
