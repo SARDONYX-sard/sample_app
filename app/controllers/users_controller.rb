@@ -11,7 +11,9 @@ class UsersController < ApplicationController
         # params[:user]はnew.htmlからPOSTで送られてきた値
         @user = User.new(user_params)
         if @user.save
-            flash[:success] = "Welcome to the Sample App!"
+            log_in @user
+            flash[:success] = 'Welcome to the Sample App!'
+
             # このコードと等価`redirect_to user_url(@user)`
             redirect_to @user
         else

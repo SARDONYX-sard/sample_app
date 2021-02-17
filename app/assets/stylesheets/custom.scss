@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@media screen and (max-width: 768px) {
+    .container {
+        padding-top: inherit;
+    }
+}
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
